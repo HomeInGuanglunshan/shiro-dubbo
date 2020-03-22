@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans        
+    http://www.springframework.org/schema/beans/spring-beans.xsd        
+    http://code.alibabatech.com/schema/dubbo        
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- dubbo:reference不加id，无法启动，报bean of type 'xxx' that could not be found -->
+	<!-- 暴露你的服务地址 -->
+	<dubbo:reference id="customSessionManager" interface="shiro.dubbo.api.cache.CustomSessionManager" check="false" />
+	<dubbo:reference id="tokenManager" interface="shiro.dubbo.api.cache.TokenManager" check="false" />
+</beans>

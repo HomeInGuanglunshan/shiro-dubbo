@@ -1,0 +1,12 @@
+server:
+  servlet:
+    context-path: /shiro.demo
+    session.timeout: 3600
+spring:
+  profiles:
+    active: freemarker,dubbo
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true

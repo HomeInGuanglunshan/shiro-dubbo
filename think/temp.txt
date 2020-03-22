@@ -1,0 +1,5 @@
+、session能不能独立成为一个服务？
+	、session管理独立成一个service？
+、搞出点模块间服务调用的感觉？
+	、“cookie, session 这些应该是前台网关统一处理吧，dubbo 通信是用于后端服务与服务之间调用，跟 cookie 这些没关系吧。”
+、网关能不能即为 consumer，也为 provider？

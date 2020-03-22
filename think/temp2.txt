@@ -1,0 +1,13 @@
+、customSessionManager.forbidUserById(id, status);
+	、这个没问题
+、TokenManager.clearUserAuthByUserId(userId);
+	、customSessionManager.getSimplePrincipalCollectionByUserId(userIds);没问题
+		、应该没问题
+	、realm.clearCachedAuthorizationInfo(simplePrincipalCollection);不太确定
+		、也应该没问题
+		、它只是操作 shiro 的 cache，去 remove 掉相应的 key
+、TokenManager.getUserId()
+	、这个恐怕有问题：在原代码中，先 SecurityUtils.getSubject().getPrincipal()，再 getId()
+	、应该需要改改
+		、通过 session id 获取 principal，再 get id
+		、user id 的获取，应该有很多途径吧？

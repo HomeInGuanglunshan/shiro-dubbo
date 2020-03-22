@@ -1,0 +1,52 @@
+、前端怎么办？
+	、能不能不跨域？
+	、如果前后端分离，那么页面跳转不能交由controller执行
+		、这么改动很大啊......
+	、SOA一定要前后端分离吗？
+	、原是基于freemarker的前端，改造起来，恐怕麻烦不小
+	、还有shiro的前端标签
+	、能不能不分离？
+、先改后端，再改前端
+	、或者前端不要也没关系？
+		、我是主攻后端开发嘛~~
+、搞个网关
+、按前缀划分模块？
+	、登录放在哪个模块？
+		、放在user好了
+	、permission、role、user
+		、member系列和u系列，都归为user模块
+	、common
+		、shiro
+		、mybatis
+		、原本的common模块
+	、可能有N个关于service的maven module
+	、consumer、api完全可以和provider写在一起啊......
+		、那就有点SpringCloud的味道了
+		、如果挂了，就一起挂了
+		、consumer和provider的数量一样多
+			、有必要吗？
+			、consumer可以比provider少吧？
+		、这样负载均衡也不好做啊
+			、起码暂时没有想到办法做
+			、前端会写得很辛苦
+	、或者就api和provider写在一起好了
+		、consumer就作为controller的集合
+		、那么consumer相当于SpringCloud的gateway了
+			、那这样，页面好像也不用改了
+	、其实也可以api和consumer写在一起的
+	、api独立成一个模块的需要并不大
+、shiro和多模块如何整合？
+	、每个模块一个ShiroConfig？
+		、放在一个common模块
+	、session会得到共享的
+	
+--------------------------------------------
+、每次请求，肯定有session id作为归属标识
+、如果shiro在provider上，consumer发来的logout请求，如何处理？
+、controller
+	、假设里面只有service
+、service
+	、里面有crud
+	、这是dubbo提供的服务
+	、有好多种service
+、或许要学一学dubbo的filter

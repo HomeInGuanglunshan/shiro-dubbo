@@ -1,0 +1,11 @@
+、怎么个独立法？
+、session 模块怎么个独立法
+	、session模块，又可以看作是操作 redis 的模块，独立出来应该不难，就是麻烦
+	、SecurityUtils 这种操作，留在 consumer 吧？
+		、接口需要对外暴露，且使用到了 SecurityUtils，或许可以修改一下
+、独立了，consumer 剩下什么呢？
+	、让 consumer 即为 consumer 又为 provider
+	、这样不好吧？这样不纯粹
+		、算了，这样省点功夫
+、user、permission 这些 service，都是通过调用 consumer 暴露的 service 来完成 access session 的
+	、这样貌似违背“高内聚低耦合”的原则吧？

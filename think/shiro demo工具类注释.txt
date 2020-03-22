@@ -1,0 +1,53 @@
+、CustomShiroCacheManager
+	、其实是 ShiroCacheManager 的代理类
+	、implements CacheManager，org.apache.shiro.cache.CacheManager
+	、ShiroConfig中，SecurityManager setCacheManager，用到它
+、JedisShiroCacheManager
+	、ShiroCacheManager 的实现类
+		、CustomShiroCacheManager 其实是 ShiroCacheManager 的代理类
+、JedisManager
+	、从Jedis连接池里获取连接，以及实现一系列 get/set/delete 方法
+、JedisShiroCache
+	、org.apache.shiro.cache.Cache<K, V> 的实现类
+	、主要在 redis 中操作 shiro 方面的缓存，如权限等
+	、使用 jedisManager 的功能
+		、JedisShiroCache 几乎可以看作是 jedisManager 的代理类
+、JedisShiroSessionRepository
+	、ShiroSessionRepository 的实现类
+		、CustomShiroSessionDAO 几乎可以看作是 ShiroSessionRepository 的代理类
+	、主要在 redis 中操作 session 方面的缓存
+	、使用 jedisManager 的功能
+		、JedisShiroSessionRepository 几乎可以看作是 jedisManager 的代理类
+、ShiroCacheManager
+	、两个方法，getCache 和 destroy
+		、get 的 Cache，是 org.apache.shiro.cache.Cache<K, V>
+	、CustomShiroCacheManager 其实是 ShiroCacheManager 的代理类
+	、JedisShiroCacheManager implements ShiroCacheManager
+、VCache
+	、只在 KickoutSessionFilter 用到，操作 redis 而已
+、ShiroManagerImpl
+	、implements ShiroManager
+、ShiroManager
+	、ShiroManagerImpl implements ShiroManager
+	、几乎用不到
+		、loadFilterChainDefinitions，加载 url 到 filter 的映射信息，但已经在 ShiroConfig 中得到实现
+		、原版 shiro.demo 也没见用到
+、CustomSessionManager
+	、操作 redis 中的 session
+		、同是操作 redis 中的 session，但比 JedisShiroSessionRepository 要复杂不少，其中包含有更多的业务
+	、为什么既要@Autowired ShiroSessionRepository shiroSessionRepository;又要@Autowired CustomShiroSessionDAO customShiroSessionDAO;？
+		、因为后者有些方法是 protected 的
+		、其实，是不是只是调用前者就足够了？
+、SessionStatus
+	、主要当 bean 用
+		、没有太大卵用
+、ShiroSessionRepository
+	、JedisShiroSessionRepository implements ShiroSessionRepository
+		、实现代码中，操作 redis，get/set session
+	、在 CustomShiroSessionDAO 里使用
+	、CustomShiroSessionDAO 几乎可以看作是 ShiroSessionRepository 的代理类
+、TokenManage
+	、主要针对 Subject 和其中的 Session 进行操作
+、CustomShiroSessionDAO
+	、SessionDAO 的实现类
+	、几乎可以看作是 ShiroSessionRepository 的代理类

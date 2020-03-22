@@ -1,0 +1,37 @@
+spring:
+  profiles:
+    active: dubbo
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/shiro_demo?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 1234
+    initialSize: 3 
+    minIdle: 2
+    maxActive: 60
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: SELECT 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    removeAbandoned: true
+    removeAbandonedTimeout: 120
+    logAbandoned: false
+    filters: stat
+
+mybatis.mapper-locations: classpath*:shiro/dubbo/mybatis/mapper/*.xml
+
+domain:
+  #Ressources  
+  cdn: //cdn.sojson.com
+  #domain index
+  www: http://shiro.itboy.net
